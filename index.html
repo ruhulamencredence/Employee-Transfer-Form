@@ -8,52 +8,75 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 20px;
-            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
         }
-        .form-container {
-            max-width: 600px;
-            background: #fff;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            border-radius: 5px;
+        .container {
+            width: 80%;
+            max-width: 900px;
             margin: auto;
+            padding: 40px;
         }
-        h2, h4 {
+        .header {
             text-align: center;
-            color: #333;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 30px;
         }
         .form-group {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
-        label {
-            display: block;
-            margin-bottom: 5px;
+        .form-group label {
+            font-size: 14px;
             font-weight: bold;
+            display: block;
         }
-        input {
+        .form-group input {
             width: 100%;
-            padding: 8px;
-            border: 1px solid #ddd;
+            padding: 10px;
+            border: 1px solid #ccc;
             border-radius: 5px;
+            font-size: 14px;
+        }
+        .form-footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 14px;
+        }
+        .form-footer h4 {
+            font-weight: normal;
         }
         button {
+            background-color: #007bff;
+            color: white;
             padding: 10px 20px;
-            background: #007bff;
-            color: #fff;
             border: none;
             border-radius: 5px;
+            font-size: 16px;
             cursor: pointer;
         }
         button:hover {
-            background: #0056b3;
+            background-color: #0056b3;
+        }
+        .thank-you {
+            font-size: 14px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .thank-you h4 {
+            font-size: 16px;
+            margin: 0;
         }
     </style>
 </head>
 <body>
 
-<div class="form-container">
-    <h2>Employee Transfer Form</h2>
+<div class="container">
+    <div class="header">
+        Employee Transfer Form
+    </div>
+
     <form id="transferForm">
         <div class="form-group">
             <label for="employeeName">Employee Name:</label>
@@ -75,10 +98,16 @@
             <label for="dateOfTransfer">Date of Transfer:</label>
             <input type="date" id="dateOfTransfer" required>
         </div>
+        
         <button type="button" onclick="generatePDF()">Submit</button>
     </form>
-    <h4>Thank you! - Ruhul Amen, MIS Department</h4>
-    <h4>Credence Housing Limited</h4>
+
+    <div class="thank-you">
+        <h4>Thank you!</h4>
+        <p>Prepared By: Ruhul Amen</p>
+        <p>Department: Management Information System (MIS)</p>
+        <p>Credence Housing Limited</p>
+    </div>
 </div>
 
 <script>
