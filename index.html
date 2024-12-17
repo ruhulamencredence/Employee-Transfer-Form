@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Transfer Form</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        .form-container {
+            max-width: 600px;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 5px;
+            margin: auto;
+        }
+        h2, h4 {
+            text-align: center;
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            background: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <h2>Employee Transfer Form</h2>
+    <form id="transferForm">
+        <div class="form-group">
+            <label for="employeeName">Employee Name:</label>
+            <input type="text" id="employeeName" required>
+        </div>
+        <div class="form-group">
+            <label for="employeeId">Employee ID:</label>
+            <input type="text" id="employeeId" required>
+        </div>
+        <div class="form-group">
+            <label for="department">Department:</label>
+            <input type="text" id="department" required>
+        </div>
+        <div class="form-group">
+            <label for="newDesignation">New Designation:</label>
+            <input type="text" id="newDesignation" required>
+        </div>
+        <div class="form-group">
+            <label for="dateOfTransfer">Date of Transfer:</label>
+            <input type="date" id="dateOfTransfer" required>
+        </div>
+        <button type="button" onclick="generatePDF()">Submit</button>
+    </form>
+    <h4>Thank you! - Ruhul Amen, MIS Department</h4>
+    <h4>Credence Housing Limited</h4>
+</div>
+
+<script>
+    const { jsPDF } = window.jspdf;
+
+    function generatePDF() {
+        // Get form values
+        const name = document.getElementById("employeeName").value;
+        const id = document.getElementById("employeeId").value;
+        const department = document.getElementById("department").value;
+        const newDesignation = document.getElementById("newDesignation").value;
+        const dateOfTransfer = document.getElementById("dateOfTransfer").value;
+
+        // Initialize jsPDF
+        const doc = new jsPDF();
+
+        // Add content to PDF
+        doc.setFontSize(16);
+        doc.text("Employee Transfer Form", 20, 20);
+        doc.setFontSize(12);
+        doc.text(`Employee Name: ${name}`, 20, 40);
+        doc.text(`Employee ID: ${id}`, 20, 50);
+        doc.text(`Department: ${department}`, 20, 60);
+        doc.text(`New Designation: ${newDesignation}`, 20, 70);
+        doc.text(`Date of Transfer: ${dateOfTransfer}`, 20, 80);
+
+        // Footer with your info
+        doc.setFontSize(10);
+        doc.text("Prepared By: Ruhul Amen", 20, 110);
+        doc.text("Department: Management Information System (MIS)", 20, 120);
+        doc.text("Company: Credence Housing Limited", 20, 130);
+        
+        doc.text("Thank you!", 20, 150);
+
+        // Save PDF
+        doc.save("employee_transfer_form.pdf");
+
+        // Open Print Dialog
+        window.print();
+    }
+</script>
+
+</body>
+</html>
